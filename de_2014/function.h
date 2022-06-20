@@ -14,6 +14,7 @@ tree cre_node(char user[], char pass[], float score);
 tree add_node(tree* root, tree* new);
 tree search(tree root, char user[]);
 tree get_info(FILE *in);
+tree LeftMostValue(tree* root);
 tree delete(tree *root, char user[]);
 
 void menuSV();

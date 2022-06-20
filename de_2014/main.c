@@ -87,6 +87,7 @@ int main(){
                         printf("Nhap ten sinh vien can xoa: ");
                         scanf("%s", user_del);
                         delete(&root, user_del);
+                        printf("\nXoa thanh cong\n");
                     }
                     else if(opt_PT == 4){
                         printf("Tien hanh luu danh sach.\n");

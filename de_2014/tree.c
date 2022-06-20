@@ -65,6 +65,34 @@ tree get_info(FILE *in){
     return root;
 }
 
-tree delete(tree *root, char user[]){
-    
+
+tree LeftMostValue(tree* root){
+    while ((*root)->left != NULL)
+        (*root) = (*root)->left;
+    return *root;
+}
+
+tree delete(tree *root, char user_del[]){
+    if((*root) == NULL) return (*root);
+    if(strcmp((*root)->user, user_del) > 0)
+        (*root)->left = delete(&(*root)->left, user_del);
+    else if (strcmp((*root)->user, user_del) < 0)
+        (*root)->right = delete(&(*root)->right, user_del);
+    else{
+        if((*root)->left == NULL){
+            tree new = (*root)->right;
+            free((*root));
+            return new;
+        }
+
+        if((*root)->right == NULL){
+            tree new = (*root)->left;
+            free((*root));
+            return new;
+        }
+
+        tree p = LeftMostValue(&(*root));
+        strcpy((*root)->user, p->user);
+        (*root)->right = delete(&(*root)->right, (*root)->user);
+    }
 }
