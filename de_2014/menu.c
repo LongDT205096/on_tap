@@ -92,7 +92,8 @@ void func_PT_1(tree *root, tree *new){
 void func_PT_2(tree *root){
     if((*root) != NULL){
         func_PT_2(&(*root)->left);
-        printf("%s %s %.1lf\n",(*root)->user,(*root)->pass,(*root)->score);
+        if(strcmp((*root)->user,"Admin") != 0)
+            printf("%s %s %.1lf\n",(*root)->user,(*root)->pass,(*root)->score);
         func_PT_2(&(*root)->right);
     }
 }

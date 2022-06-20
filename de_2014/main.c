@@ -86,7 +86,16 @@ int main(){
                         char user_del[20];
                         printf("Nhap ten sinh vien can xoa: ");
                         scanf("%s", user_del);
-                        delete(&root, user_del);
+                        tmp = search(root, user_del);
+
+                        if(tmp == NULL){
+                            printf("Khong tim thay sinh vien.\n");
+                            continue;
+                        }
+                        printf("%s\n", tmp->user);
+                        printf("%s\n", tmp->pass);
+                        printf("%.1f\n",tmp->score);
+                        root = delete(&root, user_del);
                         printf("\nXoa thanh cong\n");
                     }
                     else if(opt_PT == 4){

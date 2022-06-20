@@ -73,7 +73,8 @@ tree LeftMostValue(tree* root){
 }
 
 tree delete(tree *root, char user_del[]){
-    if((*root) == NULL) return (*root);
+    if((*root) == NULL) 
+        return *root;
     if(strcmp((*root)->user, user_del) > 0)
         (*root)->left = delete(&(*root)->left, user_del);
     else if (strcmp((*root)->user, user_del) < 0)
@@ -91,8 +92,9 @@ tree delete(tree *root, char user_del[]){
             return new;
         }
 
-        tree p = LeftMostValue(&(*root));
+        tree p = LeftMostValue(&(*root)->right);
         strcpy((*root)->user, p->user);
         (*root)->right = delete(&(*root)->right, (*root)->user);
     }
+    return *root;
 }
