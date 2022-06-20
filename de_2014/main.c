@@ -40,7 +40,7 @@ int main(){
                         continue;
                     }
 
-                    else if(opt_SV == 1){
+                    if(opt_SV == 1){
                         printf("Chuc nang xem diem cua sinh vien.\n");
                         printf("So diem: %.lf\n",tmp->score); 
                         fflush(stdin);
