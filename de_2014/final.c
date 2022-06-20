@@ -61,13 +61,10 @@ tree get_info(FILE *in){
         while(s != NULL){
             if(check == 0){
                 strcpy(user,s);
-                printf("%s\t",user);
             } else if(check == 1){
                 strcpy(pass,s);
-                printf("%s\t",pass);
             } else if(check == 2){
                 score = atof(s);
-                printf("%.1lf\n",score);
             }
             check++;
             s = strtok(NULL," ");
