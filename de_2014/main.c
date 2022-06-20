@@ -83,7 +83,10 @@ int main(){
                         fflush(stdin);
                     }
                     else if(opt_PT == 3){
-                        
+                        char user_del[20];
+                        printf("Nhap ten sinh vien can xoa: ");
+                        scanf("%s", user_del);
+                        delete(&root, user_del);
                     }
                     else if(opt_PT == 4){
                         printf("Tien hanh luu danh sach.\n");

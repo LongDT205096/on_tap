@@ -64,3 +64,7 @@ tree get_info(FILE *in){
     }
     return root;
 }
+
+tree delete(tree *root, char user[]){
+    
+}
