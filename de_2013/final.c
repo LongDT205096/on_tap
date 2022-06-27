@@ -65,11 +65,9 @@ tree function1(FILE *in, tree* root){
             (*root) = add_node(&(*root),&new2);
         }
 
-        int a = score1 - score2;
-
-        if(a > 0) new1->score = new1->score + 3;
-        else if(a < 0) new2->score = new2->score + 3;
-        else if(a == 0){
+        if(score1 > score2) new1->score = new1->score + 3;
+        else if(score1 < score2) new2->score = new2->score + 3;
+        else if(score1 == score2){
             ++new1->score;
             ++new2->score;
         }
