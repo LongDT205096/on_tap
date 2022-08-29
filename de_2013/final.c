@@ -41,6 +41,42 @@ tree search(tree root, char team[]){
     }
 }
 
+tree left_most(tree root){
+    while (root->left != NULL){
+        root = root->left;
+    }
+    return root;
+}
+
+tree delete(tree *root, int down){
+    if ((*root) == NULL){
+        return *root;
+    } else if ((*root)->score < down){
+        (*root)->left = delete(&(*root)->left, down);
+    } else if ((*root)->score > down){
+        (*root)->right = delete(&(*root)->right, down);
+    } else {
+        if ((*root)->left == NULL){
+            tree new = (*root)->right;
+            printf("%s\n", (*root)->team);
+            free((*root));
+            return new;
+        }
+        if ((*root)->right == NULL){
+            tree new = (*root)->left;
+            printf("%s\n", (*root)->team);
+            free((*root));
+            return new;
+        }
+
+        tree new = left_most((*root)->right);
+        (*root)->score = new->score;
+        strcpy((*root)->team, new->team);
+        (*root)->right = delete(&(*root)->right, down);
+    }
+    return *root;
+}
+
 tree function1(FILE *in, tree* root){
     (*root) = NULL;
     char line[256];
@@ -109,7 +145,6 @@ int main(){
 
     do{
         menu();
-        
 
         printf("Chon chuc nang: ");
         scanf("%d",&option);
@@ -135,7 +170,12 @@ int main(){
             else printf("%s %d\n\n",check->team,check->score);
         }
         if(option == 4){
-       
+            int down;
+            printf("Nhap diem xuong hang: ");
+            scanf("%d",&down);
+            for(int i = 0; i <= down; i++){
+                delete(&root, i);
+            }
         }
         if(option == 5){
             printf("Luu danh sach.\n");
